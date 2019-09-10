@@ -1,33 +1,34 @@
 {
-  "name": "frontend",
+  "name": "master-widget",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "bootstrap": "^4.3.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1",
-    "react-select": "^3.0.4"
-  },
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "rollup -c && http-server dist/ -p 3000 --cors",
+    "build": "rollup -c",
+    "build:watch": "rollup -cw",
+    "prepare": "yarn run build",
+    "clean": "rimraf dist .rpt2_cache"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/react": "^16.7.6",
+    "@types/react-dom": "16.8.5",
+    "rimraf": "^2.6.2",
+    "rollup": "^1.21.2",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-typescript2": "^0.18.0",
+    "ts-import-plugin": "^1.5.5",
+    "typescript": "3.5.3",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "http-server": "^0.11.1",
+    "rollup-plugin-replace": "^2.2.0",
+    "react-shadow-dom-retarget-events": "latest"
   }
 }

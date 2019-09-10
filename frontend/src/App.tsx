@@ -1,15 +1,12 @@
 import React from 'react';
-import './App.css';
-
 
 class Operators extends React.Component {
-  state = {
+  state: any = {
     operators: [],
     selectedOperator: ""
-  }
+  };
 
   componentDidMount() {
-    // this list should come from an API residing on the BFF
     const ops = [
       { value: "+", display: "Addition" },
       { value: "-", display: "Subtraction" },
@@ -21,15 +18,19 @@ class Operators extends React.Component {
     this.setState({ selectedOperator: ops[0].value });
   }
 
+  updateValue(e) {
+    this.setState({ selectedOperator: e.target.value })
+  };
+
   render() {
     return (
       <div>
-        <select value={ this.state.selectedOperator }
-                onChange={(e) => { this.setState({ selectedOperator: e.target.value }) }}>
+        <select value={this.state.selectedOperator}
+                onChange={(e) => this.updateValue(e)}>
           {this.state.operators.map((op) => <option key={op.value} value={op.value}>{op.display}</option>)}
         </select>
 
-        <p>Selected operation: {this.state.selectedOperator} </p>        
+        <p>Selected operation: {this.state.selectedOperator} </p>
       </div>
     )
   }
