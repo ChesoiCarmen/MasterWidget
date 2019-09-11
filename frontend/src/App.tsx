@@ -1,6 +1,4 @@
-import React from 'react';
-
-class Operators extends React.Component {
+export default (React) => class extends React.Component {
   state: any = {
     operators: [],
     selectedOperator: ""
@@ -34,6 +32,4 @@ class Operators extends React.Component {
       </div>
     )
   }
-}
-
-export default Operators;
+};

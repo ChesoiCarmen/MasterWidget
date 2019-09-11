@@ -1,8 +1,4 @@
 import typescript from 'rollup-plugin-typescript2';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import replace from 'rollup-plugin-replace';
-
 
 import pkg from './package.json';
 
@@ -11,16 +7,12 @@ export default {
   output: [
     {
       file: pkg.main,
-      format: 'iife',
-      name: 'index.js'
+      format: 'esm',
+      globals: { "react": "React" },
+      name: "masterWidget"
     },
   ],
   plugins: [
-    replace({
-      'process.env.NODE_ENV': JSON.stringify( 'production' )
-    }),
-    resolve(),
-    commonjs(),
     typescript({
       typescript: require('typescript'),
       tsconfig: 'tsconfig.json',
